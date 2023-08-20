@@ -42,4 +42,20 @@ public class PhoneBookTest {
         String foundName = PHONE_BOOK.findByNumber(notExistingPhone);
         assertTrue(foundName.isBlank());
     }
+
+    @Test
+    void findByNameShouldReturnPhoneIfExists() {
+        String existingName = "Alex";
+        String expectedPhone = "5554433";
+        PHONE_BOOK.add(existingName, expectedPhone);
+        String foundPhone = PHONE_BOOK.findByName(existingName);
+        assertEquals(expectedPhone, foundPhone);
+    }
+
+    @Test
+    void findByNameShouldReturnEmptyStringIfNameNotExists() {
+        String notExistingName = "Random";
+        String foundPhone = PHONE_BOOK.findByName(notExistingName);
+        assertTrue(foundPhone.isBlank());
+    }
 }
