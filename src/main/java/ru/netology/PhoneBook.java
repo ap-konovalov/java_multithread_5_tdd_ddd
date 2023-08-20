@@ -2,6 +2,7 @@ package ru.netology;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 /**
  * Exercise:
@@ -33,5 +34,9 @@ public class PhoneBook {
             return namesAndPhones.get(name);
         }
         return "";
+    }
+
+    public Set<String> printAllNames() {
+        return null;
     }
 }

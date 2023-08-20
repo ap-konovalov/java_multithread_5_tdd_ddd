@@ -2,6 +2,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import ru.netology.PhoneBook;
 
+import java.util.Set;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -57,5 +59,20 @@ public class PhoneBookTest {
         String notExistingName = "Random";
         String foundPhone = PHONE_BOOK.findByName(notExistingName);
         assertTrue(foundPhone.isBlank());
+    }
+
+    @Test
+    void printAllNamesShouldReturnAllNamesInAlphabetOrder() {
+        String firstName = "A";
+        String secondName = "B";
+        String thirdName = "D";
+        String fourthName = "C";
+        PHONE_BOOK.add(secondName, "2");
+        PHONE_BOOK.add(firstName, "1");
+        PHONE_BOOK.add(thirdName, "4");
+        PHONE_BOOK.add(fourthName, "3");
+        Set<String> actualResult = PHONE_BOOK.printAllNames();
+        Set<String> expectedSortedNamesSet = Set.of(firstName, secondName, thirdName, fourthName);
+        assertTrue(actualResult.equals(expectedSortedNamesSet));
     }
 }
