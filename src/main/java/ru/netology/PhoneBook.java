@@ -9,7 +9,7 @@ import java.util.Map;
  **/
 public class PhoneBook {
 
-    private static final Map<String, String> namesAndPhones = new HashMap<>();
+    private final Map<String, String> namesAndPhones = new HashMap<>();
 
     public int add(String name, String phone) {
         if (namesAndPhones.containsKey(name)) {
@@ -19,7 +19,12 @@ public class PhoneBook {
         return namesAndPhones.size();
     }
 
-    public String findByNumber(String phone){
-        return null;
+    public String findByNumber(String phone) {
+        return namesAndPhones.entrySet()
+                .stream()
+                .filter(entry -> entry.getValue().equals(phone))
+                .findFirst()
+                .orElse(Map.entry("", ""))
+                .getKey();
     }
 }
