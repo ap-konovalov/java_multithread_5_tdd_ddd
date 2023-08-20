@@ -18,4 +18,8 @@ public class PhoneBook {
         namesAndPhones.put(name, phone);
         return namesAndPhones.size();
     }
+
+    public String findByNumber(String phone){
+        return null;
+    }
 }
